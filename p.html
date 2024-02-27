@@ -1,0 +1,31 @@
+@app.route('/item/&lt;int:id&gt;', methods=['GET', 'POST'])
+2
+def edit(id):
+3
+    qry = db_session.query(Album).filter(
+4
+                Album.id==id)
+5
+    album = qry.first()
+6
+ 
+7
+    if album:
+8
+        form = AlbumForm(formdata=request.form, obj=album)
+9
+        if request.method == 'POST' and form.validate():
+10
+            # save edits
+11
+            save_changes(album, form)
+12
+            flash('Album updated successfully!')
+13
+            return redirect('/')
+14
+        return render_template('edit_album.html', form=form)
+
+    else:
+
+        return 'Error loading #{id}'.format(id=id)
