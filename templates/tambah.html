@@ -123,22 +123,26 @@
         <a href="/">Kembali</a>
     </div>
     <script>
-        document.getElementById('bookForm').addEventListener('submit', function(event) {
-            let bookTitle = document.getElementById('book').value.trim();
-            let writtenYear = document.getElementById('tgl_lahir').value.trim();
-            let author = document.getElementById('author').value.trim();
-            let genre = document.getElementById('genre').value.trim();
-            
-            if (!bookTitle || !writtenYear || !author || !genre) {
-                event.preventDefault(); // Prevent form submission
-                swal({
-                    title: "Error!",
-                    text: "All fields must be filled.",
-                    icon: "error",
-                    button: "OK",
-                });
-            }
-        });
+         // Mendapatkan tahun hari ini
+       // Mendapatkan tanggal hari ini
+    const today = new Date();
+    const currentYear = today.getFullYear();
+
+    // Mengatur nilai minimum dan maksimum untuk input date
+    const minDate = '1900-01-01'; // Tahun lama yang diinginkan
+    const maxDate = ${currentYear}-12-31; // Tahun terbaru
+
+    // Mendapatkan elemen input
+    const dateInput = document.getElementById('tgl_lahir');
+    
+    // Mengatur atribut min dan max
+    dateInput.min = minDate;
+    dateInput.max = maxDate;
+    
+    // Mengatur nilai default ke tanggal hari ini jika belum ada nilai yang ditetapkan
+    if (!dateInput.value) {
+        dateInput.value = today.toISOString().split('T')[0];
+    }
     </script>
 </body>
 </html>

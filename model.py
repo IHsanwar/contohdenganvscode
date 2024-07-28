@@ -21,8 +21,7 @@ def selectfunction():
                 'cover': profile[5]
                 }
         datas.append(res)
-
-    print(datas)
+        
     return datas
 
 def simpandata(cvr):
@@ -50,7 +49,6 @@ def simpandata(cvr):
 def deletet(book_id):
     conn = connect.sqlconnect()
 
-    # Retrieve the image path before deleting the record
     query_select = "SELECT cover FROM Book_Data WHERE id = '{id}';".format(id=book_id)
     cur = connect.sqlquery(query_select, conn)
     result = cur.fetchone()
