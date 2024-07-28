@@ -61,23 +61,23 @@
 <h1>Book Library</h1>
 <table>
     <tr>
-        <th>ID Book</th>
-        <th>Cover</th>
-        <th>Book Title</th>
-        <th>Author</th>
-        <th>Genre</th>
-        <th>Written Year</th>
-        <th>Option</th>
+        <th width="10%">ID Book</th>
+        <th width="15%">Cover</th>
+        <th width="25%">Book Title</th>
+        <th width="15%">Author</th>
+        <th width="10%">Genre</th>
+        <th width="15%">Written Year</th>
+        <th width="15%">Option</th>
     </tr>
     {% for data in results %}
     <tr>
-        <td>{{data.id}}</td>
-        <td><img src="{{data.cover}}" alt="{{data.Book_Title}}"></td>
-        <td>{{data.Book_Title}}</td>
-        <td>{{data.Author}}</td>
-        <td>{{data.gmail}}</td>
-        <td>{{data.Written_year}}</td>
-        <td><a href="/Edit/{{data.id}}">Edit</a> | <a href="/Delete/{{data.id}}">Delete</a></td>
+        <td >{{data.id}}</td>
+        <td ><img src="{{data.cover}}" alt="{{data.Book_Title}}"></td>
+        <td >{{data.Book_Title}}</td>
+        <td >{{data.Author}}</td>
+        <td >{{data.Genre}}</td>
+        <td >{{data.Written_year}}</td>
+        <td ><a href="/Edit/{{data.id}}">Edit</a> | <a href="/delete/{{data.id}}">Delete</a></td>
     </tr>
     {% endfor %}
 </table>

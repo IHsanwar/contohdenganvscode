@@ -14,12 +14,14 @@ def helloz():
 def Pluz():
     return render_template('tambah.html' , title="Jinja Demo Site")
 
-@app.route('/Tambah',methods=['POST'])
+@app.route('/Tambah', methods=['POST'])
 def PLuz2():
     loc_cover = upload.upload()
-    print(loc_cover)
-    model.simpandata( loc_cover)
-    return redirect("/Tambah")
+    response = model.simpandata(loc_cover)
+    if response[1] == 400:
+        return response
+    return redirect("/")
+
 
 @app.route('/up/<path:path>')
 def send_js(path):
@@ -34,7 +36,10 @@ def update():
     return redirect(url_for('home'))
 
 
-
+@app.route('/delete/<int:id>')
+def dele(id):
+    res = model.deletet(id)
+    return redirect('/')
 
 app.debug = True
 
