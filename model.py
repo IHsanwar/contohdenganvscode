@@ -57,7 +57,7 @@ def deletet(book_id):
         image_path = result[0]
         if os.path.exists(image_path):
             os.remove(image_path)  # Delete the image file from the file system
-
+    
         # Delete the record from the database
         query_delete = "DELETE FROM Book_Data WHERE id = '{id}';".format(id=book_id)
         print(query_delete)
